@@ -72,6 +72,9 @@ static void hookRenderLayer(void *thisptr, PHLLS layer, PHLMONITOR monitor, cons
         workspace = monitor->activeWorkspaceID();
     auto &data = overviews->data_for(workspace);
     if (data.overview) {
+        if (layer->m_layer == 3) {
+            return;
+        }
         Vector2D monitor_size = monitor->m_size;
         monitor->m_size = monitor->m_size * data.scale_i;
         SRenderModifData modif_data;
